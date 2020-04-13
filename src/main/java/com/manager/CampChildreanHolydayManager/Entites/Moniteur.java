@@ -2,121 +2,96 @@ package com.manager.CampChildreanHolydayManager.Entites;
 
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import java.io.Serializable;
 
+import javax.persistence.Entity;
+
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
-public class Moniteur {
-	private long id;
-	private String CIN;
-	private String Nom;
-	private String Prenom;
-	private String Diplome;
-	private String email;
-	private int Numero_Tel;
-	private String tache;
-	private String Genre;
+public class Equipe implements Serializable{
+   
 	
-
-
-	public Moniteur() {
+	private String  Nom_Moniteur;
+	private String Nom_Benificier;
+	private String Nom_Equipe;
+	private Moniteur moniteur;
+	private Benificier benificier;
+	 
+	 
+	public Equipe() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Moniteur(String cIN, String nom, String prenom, String diplome, String email, int numero_Tel, String tache,
-			String genre) {
+
+	public Equipe(String nom_Moniteur, String nom_Benificier, String nom_Equipe, Moniteur moniteur,
+			Benificier benificier) {
 		super();
-		CIN = cIN;
-		Nom = nom;
-		Prenom = prenom;
-		Diplome = diplome;
-		this.email = email;
-		Numero_Tel = numero_Tel;
-		this.tache = tache;
-		Genre = genre;
+		Nom_Moniteur = nom_Moniteur;
+		Nom_Benificier = nom_Benificier;
+		Nom_Equipe = nom_Equipe;
+		this.moniteur = moniteur;
+		this.benificier = benificier;
 	}
 
+
+	public String getNom_Moniteur() {
+		return Nom_Moniteur;
+	}
+
+
+	public void setNom_Moniteur(String nom_Moniteur) {
+		Nom_Moniteur = nom_Moniteur;
+	}
+
+
+	public String getNom_Benificier() {
+		return Nom_Benificier;
+	}
+
+
+	public void setNom_Benificier(String nom_Benificier) {
+		Nom_Benificier = nom_Benificier;
+	}
+
+
+	public String getNom_Equipe() {
+		return Nom_Equipe;
+	}
+
+
+	public void setNom_Equipe(String nom_Equipe) {
+		Nom_Equipe = nom_Equipe;
+	}
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public String getCIN() {
-		return CIN;
-	}
-
-	public void setCIN(String cIN) {
-		CIN = cIN;
-	}
-
-	public String getNom() {
-		return Nom;
-	}
-
-	public void setNom(String nom) {
-		Nom = nom;
-	}
-
-	public String getPrenom() {
-		return Prenom;
-	}
-
-	public void setPrenom(String prenom) {
-		Prenom = prenom;
-	}
-
-	public String getDiplome() {
-		return Diplome;
-	}
-
-	public void setDiplome(String diplome) {
-		Diplome = diplome;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public int getNumero_Tel() {
-		return Numero_Tel;
-	}
-
-	public void setNumero_Tel(int numero_Tel) {
-		Numero_Tel = numero_Tel;
-	}
-
-	public String getTache() {
-		return tache;
-	}
-
-	public void setTache(String tache) {
-		this.tache = tache;
+    @ManyToOne
+  
+	public Moniteur getMoniteur() {
+		return moniteur;
 	}
 
 
-
-	public String getGenre() {
-		return Genre;
+	public void setMoniteur(Moniteur moniteur) {
+		this.moniteur = moniteur;
 	}
 
 
-
-	public void setGenre(String genre) {
-		Genre = genre;
+    @Id
+    @ManyToOne
+    
+	public Benificier getBenificier() {
+		return benificier;
 	}
+
+
+	public void setBenificier(Benificier benificier) {
+		this.benificier = benificier;
+	}
+
 	
+	
+
 }
